@@ -55,6 +55,30 @@ var logLevelsTests = []struct {
 		expected: "1970-01-01T01:00:00+01:00 ALERT[35mBring back life form. Priority One. All other priorities rescinded.[0m\n",
 	},
 	{
+		level:     log.LevelError,
+		threshold: log.LevelError,
+		message:   "This is an error",
+		expected:  "1970-01-01T01:00:00+01:00  [ERROR] This is an error\n",
+	},
+	{
+		level:     log.LevelCritical,
+		threshold: log.LevelWarning,
+		message:   "Critical",
+		expected:  "1970-01-01T01:00:00+01:00  [CRITICAL] Critical\n",
+	},
+	{
+		level:     log.LevelNotice,
+		threshold: log.LevelInfo,
+		message:   "Noticeeee",
+		expected:  "1970-01-01T01:00:00+01:00  [NOTICE] Noticeeee\n",
+	},
+	{
+		level:     log.LevelInfo,
+		threshold: log.LevelDebug,
+		message:   "Useful information here",
+		expected:  "1970-01-01T01:00:00+01:00  [INFO] Useful information here\n",
+	},
+	{
 		level:     log.LevelInfo,
 		threshold: log.LevelWarning,
 		message:   "This should not be logged",
