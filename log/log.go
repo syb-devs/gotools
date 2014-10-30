@@ -53,8 +53,9 @@ func (level Level) String() string {
 		return "info"
 	case LevelDebug:
 		return "debug"
+	default:
+		return ""
 	}
-	return ""
 }
 
 // NowFunc is a type of function that returns a time. Useful for unit testing
