@@ -9,7 +9,7 @@ import (
 )
 
 func now() time.Time {
-	return time.Unix(0, 0)
+	return time.Unix(0, 0).In(time.UTC)
 }
 
 var logLevelsTests = []struct {
@@ -27,7 +27,7 @@ var logLevelsTests = []struct {
 		level:     log.LevelDebug,
 		threshold: log.LevelDebug,
 		message:   "Testing debug...",
-		expected: "[36m1970-01-01T01:00:00+01:00 --TestOne-- [DEBUG] Testing debug...[0m\n",
+		expected: "[36m1970-01-01T00:00:00Z --TestOne-- [DEBUG] Testing debug...[0m\n",
 	},
 	{
 		prefix:    "",
@@ -35,7 +35,7 @@ var logLevelsTests = []struct {
 		level:     log.LevelEmergency,
 		threshold: log.LevelEmergency,
 		message:   "Testing emergency...",
-		expected:  "1970-01-01T01:00:00+01:00  [EMERGENCY] Testing emergency...\n",
+		expected:  "1970-01-01T00:00:00Z  [EMERGENCY] Testing emergency...\n",
 	},
 	{
 		prefix:    "[TABLE_FLIP]",
@@ -43,7 +43,7 @@ var logLevelsTests = []struct {
 		level:     log.LevelWarning,
 		threshold: log.LevelDebug,
 		message:   "(╯°□°）╯︵ ┻━┻",
-		expected:  "1970-01-01T01:00:00+01:00 [TABLE_FLIP] [WARNING] (╯°□°）╯︵ ┻━┻\n",
+		expected:  "1970-01-01T00:00:00Z [TABLE_FLIP] [WARNING] (╯°□°）╯︵ ┻━┻\n",
 	},
 	{
 		prefix:    "[CUSTOM_PATTERN]",
@@ -52,31 +52,31 @@ var logLevelsTests = []struct {
 		level:     log.LevelAlert,
 		threshold: log.LevelWarning,
 		message:   "Bring back life form. Priority One. All other priorities rescinded.",
-		expected: "1970-01-01T01:00:00+01:00 ALERT[35mBring back life form. Priority One. All other priorities rescinded.[0m\n",
+		expected: "1970-01-01T00:00:00Z ALERT[35mBring back life form. Priority One. All other priorities rescinded.[0m\n",
 	},
 	{
 		level:     log.LevelError,
 		threshold: log.LevelError,
 		message:   "This is an error",
-		expected:  "1970-01-01T01:00:00+01:00  [ERROR] This is an error\n",
+		expected:  "1970-01-01T00:00:00Z  [ERROR] This is an error\n",
 	},
 	{
 		level:     log.LevelCritical,
 		threshold: log.LevelWarning,
 		message:   "Critical",
-		expected:  "1970-01-01T01:00:00+01:00  [CRITICAL] Critical\n",
+		expected:  "1970-01-01T00:00:00Z  [CRITICAL] Critical\n",
 	},
 	{
 		level:     log.LevelNotice,
 		threshold: log.LevelInfo,
 		message:   "Noticeeee",
-		expected:  "1970-01-01T01:00:00+01:00  [NOTICE] Noticeeee\n",
+		expected:  "1970-01-01T00:00:00Z  [NOTICE] Noticeeee\n",
 	},
 	{
 		level:     log.LevelInfo,
 		threshold: log.LevelDebug,
 		message:   "Useful information here",
-		expected:  "1970-01-01T01:00:00+01:00  [INFO] Useful information here\n",
+		expected:  "1970-01-01T00:00:00Z  [INFO] Useful information here\n",
 	},
 	{
 		level:     log.LevelInfo,
