@@ -24,9 +24,9 @@ func RegisterRole(role string, capabilities ...string) {
 
 // Auth handles user authentication and authorization
 type Auth struct {
-	Username string
-	Password []byte
-	Roles    []string
+	Username string   `json:"username"`
+	Password []byte   `json:"-"`
+	Roles    []string `json:"roles,omitempty"`
 }
 
 // New returns a Auth object
@@ -45,7 +45,7 @@ func (a *Auth) GeneratePassword(password []byte) error {
 }
 
 // SetUsername sets the username
-func (a *Auth) SetUsername(username string) {
+func (a *Auth) SetUserName(username string) {
 	a.Username = username
 }
 

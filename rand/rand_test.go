@@ -1,7 +1,7 @@
 package rand_test
 
 import (
-	"bitbucket.org/syb-devs/gotools/rand"
+	"github.com/syb-devs/gotools/rand"
 	"testing"
 )
 

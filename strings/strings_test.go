@@ -3,7 +3,7 @@ package strings_test
 import (
 	"testing"
 
-	"bitbucket.org/syb-devs/gotools/strings"
+	"github.com/syb-devs/gotools/strings"
 	"gopkg.in/mgo.v2/bson"
 )
 

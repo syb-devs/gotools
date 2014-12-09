@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"bitbucket.org/syb-devs/gotools/log"
+	"github.com/syb-devs/gotools/log"
 )
 
 func now() time.Time {

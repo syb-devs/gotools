@@ -3,13 +3,13 @@ package auth_test
 import (
 	"testing"
 
-	"bitbucket.org/syb-devs/gotools/auth"
+	"github.com/syb-devs/gotools/auth"
 )
 
 func TestCheck(t *testing.T) {
 	a := auth.New()
 	username, plain := "john doe", []byte("7h1$ 1$ 50m37h!n6")
-	a.SetUsername(username)
+	a.SetUserName(username)
 	a.GeneratePassword(plain)
 
 	err := a.Check(username, plain)
@@ -23,7 +23,7 @@ func TestCheckInvalidUser(t *testing.T) {
 
 	a := auth.New()
 	username, plain := "john doe", []byte("7h1$ 1$ 50m37h!n6")
-	a.SetUsername(username)
+	a.SetUserName(username)
 	a.GeneratePassword(plain)
 
 	err := a.Check("john williams", plain)
@@ -37,7 +37,7 @@ func TestCheckInvalidPassword(t *testing.T) {
 
 	a := auth.New()
 	username, plain := "john doe", []byte("7h1$ 1$ 50m37h!n6")
-	a.SetUsername(username)
+	a.SetUserName(username)
 	a.GeneratePassword(plain)
 
 	err := a.Check(username, []byte("invalid password"))
