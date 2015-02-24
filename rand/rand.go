@@ -7,13 +7,20 @@ import (
 )
 
 func init() {
-	Seed(time.Now().UTC().UnixNano())
+	SeedNow()
 }
 
+// Seed uses the provided seed value to initialize the default Source to a deterministic state.
 func Seed(seed int64) {
 	rand.Seed(seed)
 }
 
+// SeedNow uses the current timestamp as the seed
+func SeedNow() {
+	Seed(time.Now().UTC().UnixNano())
+}
+
+// AlphaNum generates a random alphanumeric string with the given length
 func AlphaNum(size int) string {
 	slice := make([]byte, size)
 	alphanum := []byte("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz")
