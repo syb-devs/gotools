@@ -60,6 +60,7 @@ func (a *Auth) Check(username string, password []byte) error {
 	return nil
 }
 
+// CheckPassword checks the password is correct
 func (a *Auth) CheckPassword(password []byte) error {
 	return bcrypt.CompareHashAndPassword(a.Password, password)
 }
