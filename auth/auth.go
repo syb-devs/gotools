@@ -54,13 +54,13 @@ func (a *Auth) Check(username string, password []byte) error {
 	if username != a.Username {
 		return ErrInvalidUserName
 	}
-	if err := a.checkPassword(password); err != nil {
+	if err := a.CheckPassword(password); err != nil {
 		return ErrInvalidPassword
 	}
 	return nil
 }
 
-func (a *Auth) checkPassword(password []byte) error {
+func (a *Auth) CheckPassword(password []byte) error {
 	return bcrypt.CompareHashAndPassword(a.Password, password)
 }
 
