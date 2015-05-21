@@ -3,7 +3,7 @@ package auth
 import (
 	"errors"
 
-	"code.google.com/p/go.crypto/bcrypt"
+	"golang.org/x/crypto/bcrypt"
 )
 
 var (
@@ -44,12 +44,12 @@ func (a *Auth) GeneratePassword(password []byte) error {
 	return nil
 }
 
-// SetUsername sets the username
+// SetUserName sets the username
 func (a *Auth) SetUserName(username string) {
 	a.Username = username
 }
 
-// Check, checks the username / password pair to validate a user identity
+// Check checks the username / password pair to validate a user identity
 func (a *Auth) Check(username string, password []byte) error {
 	if username != a.Username {
 		return ErrInvalidUserName
