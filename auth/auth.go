@@ -70,6 +70,11 @@ func (a *Auth) AddRole(r string) {
 	a.Roles = append(a.Roles, r)
 }
 
+// HasRole checks the given role
+func (a *Auth) HasRole(role string) bool {
+	return StringList(a.Roles).Contains(role)
+}
+
 // Can checks if the user has ANY of the given capabilities
 func (a *Auth) Can(capabilities ...string) bool {
 	for _, c := range capabilities {
