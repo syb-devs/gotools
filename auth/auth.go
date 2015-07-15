@@ -71,8 +71,13 @@ func (a *Auth) AddRole(r string) {
 }
 
 // HasRole checks the given role
-func (a *Auth) HasRole(role string) bool {
-	return StringList(a.Roles).Contains(role)
+func (a *Auth) HasRole(r string) bool {
+	for _, aRole := range a.Roles {
+		if aRole == r {
+			return true
+		}
+	}
+	return false
 }
 
 // Can checks if the user has ANY of the given capabilities
